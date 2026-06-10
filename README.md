@@ -1,24 +1,6 @@
-# README
+This is the final project of the Ruby on Rails course from The Odin Project.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Aim of this project is to create a website like Facebook/X, where users may sign up, be authenticated to view content, create posts, view posts, request to follow other users, view posts from themselves and those who they are following.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The description of the project can be found on:
+https://www.theodinproject.com/lessons/ruby-on-rails-odin-book
