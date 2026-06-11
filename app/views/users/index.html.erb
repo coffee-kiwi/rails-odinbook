@@ -14,6 +14,7 @@
         <% if @follower_requests.where(user_id: user.id, recipient_id: current_user.id, status: :pending).exists? %>
             <p> <%= user.email %> has asked to follow you</p>
             <% follow_request_id = @follower_requests.find_by(user_id: user.id, recipient_id: current_user.id, status: :pending).id %>
+            <%= button_to "Accept", followings_path, method: :post, params: { follower: user.id } %>
             <%= button_to "Decline", {:controller => :follower_requests, action: :destroy, :id => follow_request_id }, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
         <% end %>
     <% end %>

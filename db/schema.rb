@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_06_11_030044) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_11_060524) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -34,11 +34,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_11_030044) do
     t.index ["user_id"], name: "index_follower_requests_on_user_id"
   end
 
-  create_table "followers", force: :cascade do |t|
+  create_table "followings", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.bigint "followed_users_id", null: false
+    t.bigint "followers_id", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_followers_on_user_id"
+    t.index ["followed_users_id"], name: "index_followings_on_followed_users_id"
+    t.index ["followers_id"], name: "index_followings_on_followers_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -54,7 +56,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_11_030044) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -76,7 +78,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_11_030044) do
   add_foreign_key "comments", "users"
   add_foreign_key "follower_requests", "users"
   add_foreign_key "follower_requests", "users", column: "recipient_id"
-  add_foreign_key "followers", "users"
+  add_foreign_key "followings", "users", column: "followed_users_id"
+  add_foreign_key "followings", "users", column: "followers_id"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
