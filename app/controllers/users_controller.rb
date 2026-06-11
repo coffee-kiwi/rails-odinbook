@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+    @follower_requests = FollowerRequest.all
   end
 
   def show

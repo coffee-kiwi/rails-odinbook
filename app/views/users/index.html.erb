@@ -2,8 +2,20 @@
 
 <% @users.each do |user|%>
     <% unless user == current_user %>
-    <p>User: <%= user.email%></p>
-    <%= button_to "Ask to Follow", follower_requests_path, method: :post, params: { recipient: user.id } %>
-    <hr>
+        <p>User: <%= user.email%></p>
+        <% if @follower_requests.where(user_id: current_user.id, recipient_id: user.id, status: :pending).exists? %>
+            <p>Follow request is pending</p>
+        <% elsif @follower_requests.where(user_id: current_user.id, recipient_id: user.id, status: :accepted).exists? %>
+            <p>Following</p>
+        <% else %>
+            <%= button_to "Ask to Follow", follower_requests_path, method: :post, params: { recipient: user.id } %>
+        <% end %>
+
+        <% if @follower_requests.where(user_id: user.id, recipient_id: current_user.id, status: :pending).exists? %>
+            <p> <%= user.email %> has asked to follow you</p>
+            <% follow_request_id = @follower_requests.find_by(user_id: user.id, recipient_id: current_user.id, status: :pending).id %>
+            <%= button_to "Decline", {:controller => :follower_requests, action: :destroy, :id => follow_request_id }, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+        <% end %>
     <% end %>
+    <hr>
 <% end %>

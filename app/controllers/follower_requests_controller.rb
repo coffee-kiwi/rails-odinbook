@@ -1,20 +1,24 @@
 class FollowerRequestsController < ApplicationController
-    # def new
-  #   @follower_request = FollowerRequest.new
-  # end
 
   def create
-    @follower_request = current_user.follower_requests.create!(status: :pending)
+    @follower_request = current_user.follower_requests.create!(status: :pending, recipient_id: follower_request_params)
 
     if @follower_request
-      redirect_to current_user_path, notice: "Follow request sent"
+      redirect_to users_path, notice: "Follow request sent"
     else
-      redirect_to current_user_path, notice: "Failed to send request"
+      redirect_to users_path, notice: "Failed to send request"
     end
   end
 
-  private 
+  def destroy
+    @follower_request = FollowerRequest.find(params[:id])
+    @follower_request.destroy()
+    redirect_to users_path, notice: "Follow request declined"
+  end
 
-  params.expect([:recipient])
+  private 
+  def follower_request_params
+    params.expect([:recipient])
+  end
 end
 # end
