@@ -11,7 +11,8 @@ RSpec.describe User, type: :model do
 
 
   it 'destroys dependent posts' do
-    association = described_class.reflect_on_association(:posts)
-    expect(association.with_options[:dependent]).to eq :destroy
+    post1 = user.posts.create!(body: "This is a post")
+    user.destroy()
+    expect(Post.all).to eq([])
   end
 end
