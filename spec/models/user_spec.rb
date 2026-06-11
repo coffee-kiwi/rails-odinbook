@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
 
 
   it 'destroys dependent posts' do
-    post1 = user.posts.create!(body: "This is a post")
+    user.posts.create!(body: "This is a post")
     user.destroy()
     expect(Post.all).to eq([])
   end

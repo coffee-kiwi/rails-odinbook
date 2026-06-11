@@ -15,10 +15,10 @@ RSpec.describe "Posts", type: :request do
         sign_in user
       end
       it "returns successful response and lists of posts" do
-        user.posts.create!(body: "post's body")
+        user.posts.create!(body: "happy happy")
         get posts_path
         expect(response).to have_http_status(:success)
-        expect(response.body).to include("post's body")
+        expect(response.body).to include("happy happy")
       end
     end
   end
