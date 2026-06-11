@@ -1,0 +1,9 @@
+<h2>List all users</h2>
+
+<% @users.each do |user|%>
+    <% unless user == current_user %>
+    <p>User: <%= user.email%></p>
+    <%= button_to "Ask to Follow", follower_requests_path, method: :post %>
+    <hr>
+    <% end %>
+<% end %>
