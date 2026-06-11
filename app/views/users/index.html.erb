@@ -3,7 +3,7 @@
 <% @users.each do |user|%>
     <% unless user == current_user %>
     <p>User: <%= user.email%></p>
-    <%= button_to "Ask to Follow", follower_requests_path, method: :post %>
+    <%= button_to "Ask to Follow", follower_requests_path, method: :post, params: { recipient: user.id } %>
     <hr>
     <% end %>
 <% end %>

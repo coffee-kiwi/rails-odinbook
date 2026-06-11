@@ -12,5 +12,9 @@ class FollowerRequestsController < ApplicationController
       redirect_to current_user_path, notice: "Failed to send request"
     end
   end
+
+  private 
+
+  params.expect([:recipient])
 end
 # end
