@@ -1,10 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe "Posts", type: :request do
+  let(:user) { User.create!(email: "test@example.com", password: "123456") }
   describe "GET /posts" do
-    it "works! (now write some real specs)" do
-      get posts_path
-      expect(response).to have_http_status(200)
+    context "when user is not logged in" do
+      it "redirects to the login page" do
+        get posts_path
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context "when user is logged in" do
+      before do
+        sign_in user
+      end
+      it "returns successful response and lists of posts" do
+        user.posts.create!(body: "post's body")
+        get posts_path
+        expect(response).to have_http_status(:success)
+        expect(response.body).to include("post's body")
+      end
     end
   end
 end
