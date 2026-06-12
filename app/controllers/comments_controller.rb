@@ -13,10 +13,12 @@ class CommentsController < ApplicationController
     @post = Post.find(post_params)
     @new_comment = @post.comments.create!(body: comment_params, user_id: user_id)
 
-    if @new_comment
-      redirect_to posts_path, notice: "Comment created"
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      if @new_comment
+        format.turbo_stream
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 

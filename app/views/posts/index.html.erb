@@ -24,9 +24,10 @@
 
     
     <h3>Comments for this post:</h3>
-     <div class="displayed-comments">
+     <div id="displayed-comments">
         <% if post.comments.exists? %> 
-            <% post_comments = post.comments.to_a %>       
+            <% post_comments = post.comments.to_a %>
+                   
             <%= turbo_frame_tag "all_post_comments" do %>
                 <%= render "comments/all_comments", post: post, post_comments: post_comments %>
             <% end %>
