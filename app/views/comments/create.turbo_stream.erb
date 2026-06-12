@@ -1,1 +1,1 @@
-<%= turbo_stream.append "list", @new_comment  %>
+<%= turbo_stream.append "comments-post-#{@post.id}", @new_comment  %>

@@ -28,7 +28,7 @@
         <% if post.comments.exists? %> 
             <% post_comments = post.comments.to_a %>
             <%= turbo_frame_tag "all_post_comments", src: post_comments_path(post.id)  %>
-            <div id="list">    
+            <div id="comments-post-<%= post.id %>">    
                 <%= render "comments/all_comments", post_comments: post_comments %>
             </div>
         <% else %>
