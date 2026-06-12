@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [ :index, :show ]
-  resources :posts, except: [ :edit, :update ]
+  resources :posts, except: [ :edit, :update ] do
+    resources :comments, only: [ :create, :edit ]
+  end
   resources :follower_requests, :likes, only: [ :create, :destroy ]
   resources :followings, only: [ :create ]
 
