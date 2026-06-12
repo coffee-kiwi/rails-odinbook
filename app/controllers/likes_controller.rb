@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
   def create
     @post = Post.find(post_id_params)
-    @like = @post.likes.create!(user_id: user_id_params)
+    @like = current_user.likes.create!(@post)
 
     if @like
       redirect_to posts_path, notice: "Post has been liked"

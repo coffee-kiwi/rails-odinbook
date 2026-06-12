@@ -10,8 +10,7 @@
     <p><%= post.body %></p>
 
     <div class="like-count">
-        <% count = Like.where("post_id = ?", post.id).count %>
-        <p>Likes <%= count %></p>
+        <p>Likes <%= post.likes.count %></p>
     </div>
 
     <% if @my_liked_posts.where("post_id = ?", post.id).exists? %>
