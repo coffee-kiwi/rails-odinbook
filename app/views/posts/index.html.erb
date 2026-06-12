@@ -2,20 +2,43 @@
 <p>Would you like to create a new post?</p>
 <%= link_to "Create a post", new_post_path %>
 <br><hr><br>
+
 <p>List of posts shown below:</p>
 <% @posts.each do |post|%>
     <% user = post.user %>
     <p>Post by: <%= user.username%></p>
     <p><%= post.body %></p>
+
     <div class="like-count">
-        <p>Likes <%= @like_count %></p>
+        <% count = Like.where("post_id = ?", post.id).count %>
+        <p>Likes <%= count %></p>
     </div>
+
     <% if @my_liked_posts.where("post_id = ?", post.id).exists? %>
-    <% @this_like = @my_liked_posts.find_by("post_id = ?", post.id)%>
-    <%# <%= button_to "Unlike", likes_path(@this_like), method: :delete, params: { post: post }, data: { turbo_confirm: "Are you sure?" } %> 
-    <%= button_to "Unlike", {:controller => :likes, action: :destroy, :id => @this_like }, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+        <% @this_like = @my_liked_posts.find_by("post_id = ?", post.id)%>
+        <%# <%= button_to "Unlike", likes_path(@this_like), method: :delete, params: { post: post }, data: { turbo_confirm: "Are you sure?" } %> 
+        <%= button_to "Unlike", {:controller => :likes, action: :destroy, :id => @this_like }, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
     <% else %>
-    <%= button_to "Like", likes_path, method: :post, params: { post: post } %>
+        <%= button_to "Like", likes_path, method: :post, params: { post: post } %>
     <% end %>
+
+    
+    <h3>Comments for this post:</h3>
+     <div class="displayed-comments">
+        <% if post.comments.exists? %> 
+            <% post_comments = post.comments.to_a %>       
+            <%= turbo_frame_tag "all_post_comments" do %>
+                <%= render "comments/all_comments", post: post, post_comments: post_comments %>
+            <% end %>
+        <% else %>
+            <p>No comments yet.</p>
+        <% end %>
+    </div>
+
+    <div class="new-comment">
+        <%= turbo_frame_tag "new_comment_form" do %>
+            <%= link_to "Write a new comment?", new_post_comment_path(post) %>
+        <% end %>
+    </div>
     <hr>
 <% end %>

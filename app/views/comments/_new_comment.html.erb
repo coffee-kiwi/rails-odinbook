@@ -1,0 +1,12 @@
+
+    <%= form_with model: [@post, @new_comment] do |form| %>
+        <div>
+            <%= form.label :body %>
+            <%= form.text_area :body, size: "30x5" %>
+        </div>
+
+        <div>
+            <%= form.submit %>
+        </div>
+    <% end %>
+
