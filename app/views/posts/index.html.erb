@@ -24,13 +24,13 @@
 
     
     <h3>Comments for this post:</h3>
-     <div id="displayed-comments">
+     <div class="displayed-comments">
         <% if post.comments.exists? %> 
             <% post_comments = post.comments.to_a %>
-                   
-            <%= turbo_frame_tag "all_post_comments" do %>
-                <%= render "comments/all_comments", post: post, post_comments: post_comments %>
-            <% end %>
+            <%= turbo_frame_tag "all_post_comments", src: post_comments_path(post.id)  %>
+            <div id="list">    
+                <%= render "comments/all_comments", post_comments: post_comments %>
+            </div>
         <% else %>
             <p>No comments yet.</p>
         <% end %>
@@ -38,7 +38,7 @@
 
     <div class="new-comment">
         <%= turbo_frame_tag "new_comment_form" do %>
-            <%= link_to "Write a new comment?", new_post_comment_path(post) %>
+            <%= render "comments/new_comment", post: post %>
         <% end %>
     </div>
     <hr>

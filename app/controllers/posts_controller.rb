@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.all
-    @comments = Comment.all
+    @all_comments = Comment.all
     # @all_likes = Likes.all
     @my_liked_posts = Like.all.where("user_id = ?", current_user.id)
   end
