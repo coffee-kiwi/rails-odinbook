@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only: [ :index, :show ]
-  resources :posts, except: [ :edit, :update ] do
+  resources :posts, except: [ :edit, :update, :destroy ] do
     resources :comments, shallow: true
+    resources :likes, only: [ :create, :destroy ]
   end
-  resources :follower_requests, :likes, only: [ :create, :destroy ]
+  resources :follower_requests, only: [ :create, :destroy ]
   resources :followings, only: [ :create ]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

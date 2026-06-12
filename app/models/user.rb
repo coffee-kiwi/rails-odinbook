@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :followings, foreign_key: :followed_users_id
   has_many :followed_users, through: :followings
 
-  has_many :followings, foreign_key: :followers_id 
+  has_many :followings, foreign_key: :followers_id
   has_many :followers, through: :followings
 
   # has_many :followers

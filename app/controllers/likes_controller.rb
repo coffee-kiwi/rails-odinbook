@@ -1,19 +1,19 @@
 class LikesController < ApplicationController
   def create
     @post = Post.find(post_id_params)
-    @like = current_user.likes.create!(@post)
+    @like = @post.likes.create!(user_id: user_id_params)
 
     if @like
-      redirect_to posts_path, notice: "Post has been liked"
+      redirect_to post_path(@post), notice: "Post has been liked"
     else
-      redirect_to posts_path, notice: "An error has occurred"
+      redirect_to post_path(@post), notice: "An error has occurred"
     end
   end
 
   def destroy
     @like = Like.find(likes_params)
     if @like.destroy()
-      redirect_to posts_path, notice: "Unliked post"
+      redirect_to posts_path(post_id_params), notice: "Unliked post"
     else
       redirect_to posts_path, notice: "Unable to delete like"
     end

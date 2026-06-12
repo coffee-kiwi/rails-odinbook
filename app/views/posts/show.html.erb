@@ -9,31 +9,33 @@
 </div>
 
 <div class="like-buttons">
-    <% if @my_liked_posts.where("post_id = ?", post.id).exists? %>
-        <% @this_like = @my_liked_posts.find_by("post_id = ?", post.id)%>
-        <%= button_to "Unlike", {:controller => :likes, action: :destroy, :id => @this_like }, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+    <% if @my_like %>
+        <%= button_to "Unlike", post_like_path(@post.id, @my_like.id), method: :delete %>
+
+        <%# <%= button_to "Unlike", {:controller => :likes, action: :destroy, :id => @my_liked_posts }, method: :delete, data: { turbo_confirm: "Are you sure?" } %> 
     <% else %>
-        <%= button_to "Like", likes_path, method: :post, params: { post: post } %>
+        <%= button_to "Like", post_likes_path(@post), method: :post, params: { post: @post } %>
+        <%# Maybe send @post.id? %>
     <% end %>
 </div>
 
 <div class="comments-section">
     <h3>Comments for this post:</h3>
      <div class="displayed-comments">
-        <% if post.comments.exists? %> 
-            <% post_comments = post.comments.to_a %>
-            <%= turbo_frame_tag "all_post_comments", src: post_comments_path(post.id)  %>
-            <div id="comments-post-<%= post.id %>">    
+        <% if @post.comments.exists? %> 
+            <% post_comments = @post.comments.to_a %>
+            <%= turbo_frame_tag "all_post_comments", src: post_comments_path(@post.id)  %>
+            <div id="comments-post-<%= @post.id %>">    
                 <%= render "comments/all_comments", post_comments: post_comments %>
             </div>
         <% else %>
-            <div id="comments-post-<%= post.id %>"</div>
+            <div id="comments-post-<%= @post.id %>"</div>
         <% end %>
     </div>
 
     <div class="new-comment">
         <%= turbo_frame_tag "new_comment_form" do %>
-            <%= render "comments/new_comment", post: post %>
+            <%= render "comments/new_comment", post: @post %>
         <% end %>
     </div>
 </div>

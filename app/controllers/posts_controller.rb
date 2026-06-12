@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @all_comments = Comment.all
-    # @all_likes = Likes.all
     @my_liked_posts = Like.all.where("user_id = ?", current_user.id)
   end
 
@@ -21,6 +20,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @my_like = Like.find_by("user_id = ? AND post_id = ?", current_user.id, @post.id)
   end
 
   def destroy
