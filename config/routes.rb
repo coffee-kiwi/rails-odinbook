@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [ :index, :show ]
   resources :posts, except: [ :edit, :update ]
-  resources :follower_requests, only: [ :create, :destroy ]
+  resources :follower_requests, :likes, only: [ :create, :destroy ]
   resources :followings, only: [ :create ]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "posts#index"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

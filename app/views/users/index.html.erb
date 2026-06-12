@@ -1,13 +1,13 @@
 <h2>List all users</h2>
-<p>Current user is <%= current_user.email %></p>
+<p>Current user is <%= current_user.username %></p>
 
 <% @users.each do |user|%>
     <% unless user == current_user %>
-        <p>User: <%= user.email%></p>
-        <% if @my_pending_requests.where(recipient_id: user.id).exists? %>
+        <p>User: <%= user.username%></p>
+        <% if @my_pending_requests.where("recipient_id = ?", user.id).exists? %>
             <p>Follow request is pending</p>
             <hr>
-        <% elsif @my_accepted_requests.where(recipient_id: user.id).exists? %>
+        <% elsif @my_accepted_requests.where("recipient_id = ?", user.id).exists? %>
             <p>Following</p>
             <hr>
         <% else %>
@@ -15,11 +15,11 @@
             <hr>
         <% end %>
 
-        <% if @follow_requests.where(user_id: user.id).exists? %>
+        <% if @follow_requests.where("user_id = ?", user.id).exists? %>
             <p> <%= user.email %> has asked to follow you</p>
-            <% @follow_request = @follow_requests.find_by(user_id: user.id, recipient_id: current_user.id, status: :pending).id %>
-            <%= button_to "Accept", followings_path, method: :post, params: { follower: user.id, request: @follow_request } %>
-            <%= button_to "Decline", {:controller => :follower_requests, action: :destroy, :id => @follow_request }, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
+            <% follow_request_id = @follow_requests.find_by("user_id = ?", user.id).id %>
+            <%= button_to "Accept", followings_path, method: :post, params: { follower: user.id, request: follow_request_id } %>
+            <%= button_to "Decline", {:controller => :follower_requests, action: :destroy, :id => follow_request_id }, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
         <hr>
         <% end %>
     <% end %>

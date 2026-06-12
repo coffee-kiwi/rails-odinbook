@@ -1,5 +1,4 @@
 class FollowerRequestsController < ApplicationController
-
   def create
     @follower_request = current_user.follower_requests.create!(status: :pending, recipient_id: follower_request_params)
 
@@ -16,9 +15,8 @@ class FollowerRequestsController < ApplicationController
     redirect_to users_path, notice: "Follow request declined"
   end
 
-  private 
+  private
   def follower_request_params
-    params.expect([:recipient])
+    params.expect([ :recipient ])
   end
 end
-# end
