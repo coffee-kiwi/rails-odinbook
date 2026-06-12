@@ -32,7 +32,7 @@
                 <%= render "comments/all_comments", post_comments: post_comments %>
             </div>
         <% else %>
-            <p>No comments yet.</p>
+            <div id="comments-post-<%= post.id %>"</div>
         <% end %>
     </div>
 
