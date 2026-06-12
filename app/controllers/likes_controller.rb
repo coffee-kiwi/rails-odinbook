@@ -13,9 +13,9 @@ class LikesController < ApplicationController
   def destroy
     @like = Like.find(likes_params)
     if @like.destroy()
-      redirect_to posts_path(post_id_params), notice: "Unliked post"
+      redirect_to post_path(post_id_params), notice: "Unliked post"
     else
-      redirect_to posts_path, notice: "Unable to delete like"
+      redirect_to post_path(post_id_params), notice: "Unable to delete like"
     end
   end
 
