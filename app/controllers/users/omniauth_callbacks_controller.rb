@@ -1,4 +1,4 @@
-class Users::OmniauthCallbacksController < ApplicationController
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   #   PROVIDERS = {
   #     "google_oauth2" => "Google",
   #     "github" => "Github"
