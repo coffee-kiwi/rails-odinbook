@@ -2,44 +2,22 @@
 <p>Would you like to create a new post?</p>
 <%= link_to "Create a post", new_post_path %>
 <br><hr><br>
-
+<% if @followers_id.nil? %>
+    <% @followers_id = [] %>
+<% end %>
 <p>List of posts shown below:</p>
 <% @posts.each do |post|%>
-    <% user = post.user %>
-    <p>Post by: <%= user.username%></p>
-    <%= link_to "View post", post_path(post) %>
-    <p><%= post.body %></p>
+    <% if @followers_id.include?(post.user_id) || post.user_id == current_user.id%>
+        <% user = post.user %>
+        <p>Post by: <%= user.username%></p>
+        <%= link_to "View post", post_path(post) %>
+        <p><%= post.body %></p>
 
-    <div class="like-count">
-        <p>Likes <%= post.likes.count %></p>
-    </div>
-    <%# <% @this_like = @my_liked_posts.find_by("post_id = ?", post.id)%> 
-    <%# <% if @this_like %> 
-        <%# <%= button_to "Unlike", post_like_path(post, @this_like), method: :delete, params: { post: post }, data: { turbo_confirm: "Are you sure?" } %>  
-    <%# <% else %> 
-        <%# <%= button_to "Like", post_likes_path(post), method: :post, params: { post: post } %> 
-    <%# <% end %> 
-
-    
-    <%# <h3>Comments for this post:</h3> %>
-     <%# <div class="displayed-comments"> %>
-        <%# <% if post.comments.exists? %>  
-            <%# <% post_comments = post.comments.to_a %> 
-            <%# <%= turbo_frame_tag "all_post_comments", src: post_comments_path(post.id)  %> 
-            <%# <div id="comments-post-<%= post.id %>
-            <%# ">      %>
-                <%# <%= render "comments/all_comments", post_comments: post_comments %> 
-            <%# </div> %>
-        <%# <% else %> 
-            <%# <div id="comments-post-<%= post.id %>
-            <%# "</div>  %>
-        <%# <% end %> 
-    <%# </div> %>
-
-    <%# <div class="new-comment"> %>
-        <%# <%= turbo_frame_tag "new_comment_form" do %> 
-            <%# <%= render "comments/new_comment", post: post %> 
-        <%# <% end %> 
-    <%# </div> %>
-    <hr>
+        <div class="like-count">
+            <p>Likes <%= post.likes.count %></p>
+        </div>
+        <hr>
+    <% end %>
 <% end %>
+
+

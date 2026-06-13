@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc)
+    @followers_id = current_user.follower_requests.accepted.pluck(:recipient_id)
     @all_comments = Comment.all
     @my_liked_posts = Like.all.where("user_id = ?", current_user.id)
   end
