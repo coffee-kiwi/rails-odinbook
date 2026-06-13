@@ -19,10 +19,12 @@ gem "jbuilder"
 # Add figaro gem
 gem "figaro"
 # Omniauth gems and strategies
-gem "omniauth"
-gem "omniauth-rails_csrf_protection"
-gem "omniauth-github", "~> 2.0.0"
 gem "omniauth-google-oauth2"
+gem "omniauth-github"
+gem "omniauth"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
