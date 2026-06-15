@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     find_user
+    @posts = @user.posts.sort_by { |post| post.created_at }.reverse
   end
 
   private
