@@ -68,14 +68,14 @@ Rails.application.configure do
   #   port: 587,
   #   authentication: :plain
   # }
-  ActionMailer:\:Base.smtp_settings = {
-  :user_name => 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
-  :password => ENV["SENDGRID_API_ODIN"], # This is the secret sendgrid API key which was issued during API key creation
-  :domain => 'example.com',
-  :address => 'smtp.sendgrid.net',
-  :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
+  ActionMailer::Base.smtp_settings = {
+  user_name: "apikey", # This is the string literal 'apikey', NOT the ID of your API key
+  password: ENV["SENDGRID_API_ODIN"], # This is the secret sendgrid API key which was issued during API key creation
+  domain: "example.com",
+  address: "smtp.sendgrid.net",
+  port: 587,
+  authentication: :plain,
+  enable_starttls_auto: true
 }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
@@ -96,6 +96,4 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
-
-
 end
