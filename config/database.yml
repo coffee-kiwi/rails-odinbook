@@ -97,8 +97,8 @@ production:
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: <%= ENV["DATABASE_ODIN_QUEUE"] %>
-    # migrations_paths: db/queue_migrate
+    database: odinbook_production_queue
+    migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
     database: odinbook_production_cable
