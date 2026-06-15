@@ -10,12 +10,16 @@ class FollowerRequestsController < ApplicationController
   end
 
   def destroy
-    @follower_request = FollowerRequest.find(params[:id])
+    find_request
     @follower_request.destroy()
     redirect_to users_path, notice: "Follow request declined"
   end
 
   private
+
+  def find_request
+    @follower_request = FollowerRequest.find(params[:id])
+  end
   def follower_request_params
     params.expect([ :recipient ])
   end
