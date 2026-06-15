@@ -6,4 +6,13 @@ class ApplicationController < ActionController::Base
   stale_when_importmap_changes
   # Always check authentication before anything
   before_action :authenticate_user!
+
+  # Add username to strong parameters
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :username ])
+  end
 end
