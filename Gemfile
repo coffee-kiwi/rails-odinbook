@@ -23,6 +23,8 @@ gem "omniauth-google-oauth2"
 gem "omniauth-github"
 gem "omniauth"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
+# Add Sendgrid gem
+gem "sendgrid-ruby"
 
 
 
