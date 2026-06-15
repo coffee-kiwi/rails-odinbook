@@ -4,7 +4,8 @@
 <% if @user.avatar_url %>
 <%= image_tag @user.avatar_url, alt: "#{@user.username}'s Avatar", class: "avatar" %>
 <% end %>
-<p><%=@user.bio%></p>
+<p class="bio-title">Bio:</p>
+<p class="bio"><%=@user.bio%></p>
 
 <% @posts.each do |post| %>
     <p class="post-title"><%= post.title%></p>

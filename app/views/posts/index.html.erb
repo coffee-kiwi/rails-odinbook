@@ -8,6 +8,7 @@
 <p>List of posts shown below:</p>
 <% @posts.each do |post|%>
     <% if @followers_id.include?(post.user_id) || post.user_id == current_user.id%>
+        <p class="post-title"><%=post.title%></p>
         <% user = post.user %>
         <p>Post by: <%= user.username%></p>
         <%= link_to "View post", post_path(post) %>
