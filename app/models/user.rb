@@ -52,6 +52,7 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
+    @user = User.last
     UserMailer.with(user: @user).welcome_email.deliver_later
   end
 end

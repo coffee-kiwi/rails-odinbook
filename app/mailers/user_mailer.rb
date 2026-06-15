@@ -1,5 +1,5 @@
 class UserMailer < Devise::Mailer
-  # default from: ENV["DEFAULT_EMAIL"]
+  default from: ENV["DEFAULT_EMAIL"]
   helper :application
 
   def welcome_email

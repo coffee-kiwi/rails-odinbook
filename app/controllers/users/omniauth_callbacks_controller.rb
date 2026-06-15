@@ -1,23 +1,4 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  #   PROVIDERS = {
-  #     "google_oauth2" => "Google",
-  #     "github" => "Github"
-  # }.freeze
-
-  #   def google_oauth2
-  #     handle_auth("google_oauth2")
-  #   end
-
-  #   def github
-  #     handle_auth("github")
-  #   end
-
-  #   def failure
-  #     redirect_to root_path, alert: I18n.t("devise.omniauth_callbacks.failure")
-  #   end
-
-  #   private
-
   def google_oauth2
     @user = User.from_omniauth(request.env["omniauth.auth"])
 
