@@ -1,0 +1,13 @@
+<h1> Welcome to Odinbook, <%= @user.username %></h1>
+<p>
+    You have signed up successfully to Odinbook.
+    Your username is <%= @user.username %>.
+    Please login using your email and password 
+    or with the provider you signed up with.
+</p>
+<p>
+    To login to Odinbook, just follow the link below:
+    <%= link_to "Odinbook", login_url %>
+</p>
+<p>Thank you again for joining, don't hesitate
+    to follow others and make some posts!</p>

@@ -22,6 +22,9 @@ class User < ApplicationRecord
   has_many :follower_requests
   has_many :recipients, class_name: "User", foreign_key: :recipient_id
 
+  # Send welcome email
+  after_create :send_welcome_email
+
   def self.from_omniauth(auth)
   # Try to find user by provider and uid first
   user = where(provider: auth.provider, uid: auth.uid).first
@@ -44,5 +47,11 @@ class User < ApplicationRecord
     user.provider = auth.provider
     user.uid = auth.uid
     end
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.with(user: @user).welcome_email.deliver_later
   end
 end
