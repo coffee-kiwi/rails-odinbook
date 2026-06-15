@@ -25,6 +25,8 @@ class User < ApplicationRecord
   # Send welcome email
   after_create :send_welcome_email
 
+  private
+
   def self.from_omniauth(auth)
   # Try to find user by provider and uid first
   user = where(provider: auth.provider, uid: auth.uid).first
