@@ -87,8 +87,8 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: odinbook_production
-    username: odinbook
+    database: odinbook_postgres_6ahq
+    username: odinbook_postgres_6ahq_user
     password: <%= ENV["ODINBOOK_DATABASE_PASSWORD"] %>
     url: <%= ENV["DATABASE_URL"] %>
   cache:
