@@ -44,4 +44,4 @@ pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
 workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 
 preload_app!
-plugin :solid_queue # Run Solid Queue with rails server
+# plugin :solid_queue # Run Solid Queue with rails server
