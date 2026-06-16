@@ -23,5 +23,8 @@ module Odinbook
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    #
+    # Remove authentication for mission control to see it easier
+    config.mission_control.jobs.http_basic_auth_enabled = false
   end
 end
