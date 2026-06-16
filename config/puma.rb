@@ -44,4 +44,7 @@ pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
 workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 
 preload_app!
-# plugin :solid_queue # Run Solid Queue with rails server
+# Yes, it looks like uncommenting below helps the server to keep
+# running with Solid Queue. Solid queue does not initiate without
+# the below code.
+plugin :solid_queue # Run Solid Queue with rails server
