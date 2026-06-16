@@ -7,3 +7,4 @@ bin/rails assets:precompile
 bin/rails assets:clean
 
 bin/rails db:prepare
+bundle exec rake solid_queue:start
