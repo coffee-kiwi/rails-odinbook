@@ -56,8 +56,8 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.perform_deliveries = true
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.perform_deliveries = true
 
   # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "odinbook-jiuf.onrender.com", protocol: "https" }
@@ -70,18 +70,23 @@ Rails.application.configure do
   #   port: 587,
   #   authentication: :plain
   # }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  user_name: "apikey", # This is the string literal 'apikey', NOT the ID of your API key
-  password: ENV["SENDGRID_API_ODIN"], # This is the secret sendgrid API key which was issued during API key creation
-  domain: "odinbook-jiuf.onrender.com",
-  address: "smtp.sendgrid.net",
-  port: 587,
-  authentication: :plain,
-  enable_starttls_auto: true,
-  open_timeout: 15, # Time to establish connection (seconds)
-  read_timeout: 15  # Time to wait for a response (seconds)
-}
+  #   config.action_mailer.delivery_method = :smtp
+  #   config.action_mailer.smtp_settings = {
+  #   user_name: "apikey", # This is the string literal 'apikey', NOT the ID of your API key
+  #   password: ENV["SENDGRID_API_ODIN"], # This is the secret sendgrid API key which was issued during API key creation
+  #   domain: "odinbook-jiuf.onrender.com",
+  #   address: "smtp.sendgrid.net",
+  #   port: 587,
+  #   authentication: :plain,
+  #   enable_starttls_auto: true,
+  #   open_timeout: 15, # Time to establish connection (seconds)
+  #   read_timeout: 15  # Time to wait for a response (seconds)
+  # }
+  config.action_mailer.delivery_method = :sendgrid_actionmailer
+  config.action_mailer.sendgrid_actionmailer_settings = {
+    api_key: ENV["SENDGRID_API_ODIN"],
+    raise_delivery_errors: true
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

@@ -41,6 +41,9 @@ gem "solid_cable"
 # Add mission-control to monitor the workers for solid_queue
 gem "mission_control-jobs"
 
+# Add Sendgrid gem to use HTTPs API instead of smtp
+gem "sendgrid-actionmailer"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
