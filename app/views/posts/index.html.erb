@@ -1,24 +1,27 @@
-<h2> This is the Index page for posts</h2>
-<p>Would you like to create a new post?</p>
-<%= link_to "Create a post", new_post_path %>
-<br><hr><br>
-<% if @followers_id.nil? %>
-    <% @followers_id = [] %>
-<% end %>
-<p>List of posts shown below:</p>
-<% @posts.each do |post|%>
-    <% if @followers_id.include?(post.user_id) || post.user_id == current_user.id%>
-        <p class="post-title"><%=post.title%></p>
-        <% user = post.user %>
-        <p>Post by: <%= user.username%></p>
-        <%= link_to "View post", post_path(post) %>
-        <p><%= post.body %></p>
+<div class="page-wrapper">
+    <%# <div class="timeline" %>
+        <h2>Timeline</h2>
+    <%# </div> %>
 
-        <div class="like-count">
-            <p>Likes <%= post.likes.count %></p>
-        </div>
-        <hr>
+    <% if @followers_id.nil? %>
+        <% @followers_id = [] %>
     <% end %>
-<% end %>
+    <div class="post-display">
+    <% @posts.each do |post|%>
+        <% if @followers_id.include?(post.user_id) || post.user_id == current_user.id%>
+            <article class="post">
+                <p class="title"><%=post.title%></p>
+                <% user = post.user %>
+                <p class="author">Post by: <%= user.username%></p>
+                <%= link_to "Take a read", post_path(post) %>
+                <p class="post-body"><%= post.body %></p>
 
-
+                <div class="like-count">
+                    <p>Likes <%= post.likes.count %></p>
+                </div>
+            </article>
+            <hr>
+        <% end %>
+    <% end %>
+    </div>
+</div>

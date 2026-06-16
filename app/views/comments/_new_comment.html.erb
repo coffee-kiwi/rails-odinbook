@@ -1,12 +1,14 @@
-
+<div class ="new-comment">
 <%= form_with model: [post, post.comments.new ] do |form| %>
-    <div>
+    <div class="form-title">
         <%= form.label :body %>
+    </div>
+    <div>
         <%= form.text_area :body, size: "30x5" %>
     </div>
-
+    <br>
     <div>
-        <%= form.submit %>
+        <button type="submit" class="comment-btn">Create Comment</button>
     </div>
 <% end %>
-
+</div>
