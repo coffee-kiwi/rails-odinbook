@@ -47,4 +47,4 @@ preload_app!
 # Yes, it looks like uncommenting below helps the server to keep
 # running with Solid Queue. Solid queue does not initiate without
 # the below code.
-plugin :solid_queue # Run Solid Queue with rails server
+# plugin :solid_queue # Run Solid Queue with rails server
