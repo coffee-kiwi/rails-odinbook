@@ -70,6 +70,7 @@ Rails.application.configure do
   #   port: 587,
   #   authentication: :plain
   # }
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   user_name: "apikey", # This is the string literal 'apikey', NOT the ID of your API key
   password: ENV["SENDGRID_API_ODIN"], # This is the secret sendgrid API key which was issued during API key creation
@@ -77,7 +78,9 @@ Rails.application.configure do
   address: "smtp.sendgrid.net",
   port: 587,
   authentication: :plain,
-  enable_starttls_auto: true
+  enable_starttls_auto: true,
+  open_timeout: 15, # Time to establish connection (seconds)
+  read_timeout: 15  # Time to wait for a response (seconds)
 }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
