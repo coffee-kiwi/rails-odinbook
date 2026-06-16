@@ -10,9 +10,12 @@ default: &default
 
 development:
   <<: *default
+  database: odinbook_development
 
 test:
   <<: *default
+  database: odinbook_test
 
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
