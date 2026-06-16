@@ -4,7 +4,7 @@ class UserMailer < Devise::Mailer
 
   def welcome_email
     @user = params[:user]
-    @url = "localhost:3000"
+    @url = "https://odinbook-jiuf.onrender.com"
     mail(to: @user.email, subject: "Welcome to Odinbook")
   end
 end
