@@ -33,7 +33,9 @@
           <%= link_to "Posts", root_path %>
           <%= link_to "Create a new post", new_post_path %>
           <%= link_to "Community", users_path %>
-          <%= link_to "My page", user_path(current_user) %>
+          <% if current_user %> 
+            <%= link_to "My page", user_path(current_user) %>
+          <% end %>
         </div>
         <div class="login-links">
           <% if current_user %>
