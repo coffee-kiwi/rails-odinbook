@@ -37,17 +37,19 @@ a {
 
 .navbar {
     display: grid;
-    grid-template-columns: 3fr 1fr;
+    grid-template-columns: repeat( auto-fit, minmax(120px, 1fr) );;
     height: 3rem;
     background-color: #555B6E;
-    border-radius: 10px;
-    margin: 16px;
+    height: 10vh;
+    justify-items: center;
+    align-items: center;
+    padding: 1vh;
 }
  .nav-links, .login-links {
-    display: flex;
+    /* display: flex;
     justify-content: start;
     align-items: center;
-    gap: 3rem;
+    gap: 3rem; */
     padding-left: 3rem;
  }
 
@@ -104,7 +106,7 @@ a {
     font-size: 1.2rem;
 }
 
-button {
+.likes-button button {
     background-color: #FFD6BA;
     border: 1px solid #555B6E;
     font-size: 1rem;
@@ -138,3 +140,36 @@ button {
     font-weight: 500;
 }
 
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FAf9f9;
+    margin: 14px 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #89B0AE;
+    width: 50vw;
+    gap: 8px;
+    border-radius: 5px;
+    padding: 16px 0;
+}
+
+.oauth-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 50%
+}
+.button_to {
+    width: 75px;
+    height: 125px;
+}
+.hint {
+    font-size: smaller;
+}
