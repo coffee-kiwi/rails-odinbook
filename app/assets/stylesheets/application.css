@@ -64,7 +64,7 @@ a {
 
 
 /* Below for post styling */
-
+.page-wrapper,
  .post-wrapper,
  .user-wrapper,
  .new-post {
@@ -134,9 +134,8 @@ a {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    background-color: #89B0AE;
+    background-color: #6f7c80;
     padding: 8px 16px;
-    background-color: #89B0AE;
     border-radius: 10px;
 }
 
@@ -169,7 +168,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #89B0AE;
+    background-color: #6f7c80;
     width: 50vw;
     gap: 8px;
     border-radius: 5px;

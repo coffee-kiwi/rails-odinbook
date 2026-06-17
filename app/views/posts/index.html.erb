@@ -12,7 +12,7 @@
             <article class="post">
                 <p class="title"><%=post.title%></p>
                 <% user = post.user %>
-                <p class="author">Post by: <%= user.username%></p>
+                <p class="author"><%= user.username%></p>
                 <%= link_to "Take a read", post_path(post) %>
                 <p class="post-body"><%= post.body %></p>
 
