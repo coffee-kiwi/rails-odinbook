@@ -41,6 +41,11 @@ gem "solid_cable"
 # Add mission-control to monitor the workers for solid_queue
 gem "mission_control-jobs"
 
+# Add Google Cloud Storage gem for Active Storage
+gem "google-cloud-storage", "~> 1.11", require: false
+
+
+
 # Add Sendgrid gem to use HTTPs API instead of smtp
 gem "sendgrid-actionmailer"
 
