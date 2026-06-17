@@ -6,6 +6,10 @@
         <% if @user.avatar_url %>
             <%= image_tag @user.avatar_url, alt: "#{@user.username}'s Avatar", class: "avatar" %>
         <% end %>
+
+        <div class="edit-link">
+            <%= link_to "Update my details", edit_user_path(current_user) %>
+        </div>
         <article class="bio-wrapper">
             <p class="bio-title">Bio:</p>
             <p class="bio"><%=@user.bio%></p>

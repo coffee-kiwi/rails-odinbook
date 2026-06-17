@@ -256,3 +256,6 @@ a {
     align-items: center;
     width: 80vw;
 }
+.edit-link  a {
+    color: #555B6E;
+}
