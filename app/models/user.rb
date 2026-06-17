@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2 github]
 
-  # :omniauthable, omniauth_providers: %i[:google_oauth2 github]
+
+  has_one_attached :avatar
 
   has_many :posts, dependent: :destroy
 

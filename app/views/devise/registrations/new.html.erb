@@ -24,6 +24,11 @@
         <p><%= f.password_field :password, autocomplete: "new-password" %></p>
       </div>
 
+      <div class="avatar">
+        <%= f.label :avatar, "Profile Picture" %><br />
+        <%= f.file_field :avatar %>
+      </div>
+
       <div class="field">
         <p><%= f.label :confirm_password %></p>
         <p><%= f.password_field :confirm_password, autocomplete: "new-password" %></p>
