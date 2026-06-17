@@ -1,12 +1,14 @@
-<h2>Create a new post</h2>
 
-<%= form_with model: @post do |form| %>
-    <div>
-        <%= form.label :body %>
-        <%= form.text_area :body, size: "30x5" %>
-    </div>
-
-    <div>
-        <%= form.submit %>
-    </div>
-<% end %>
+<article class="new-post">
+    <h2>Create a new post</h2>
+    <%= form_with model: @post do |form| %>
+        <div>
+            <p class="hidden"><%= form.label :body %></p>
+            <p><%= form.text_area :body, size: "50x10" %></p>
+        </div>
+        <br>
+        <div>
+            <button type="submit" class="post-btn">Create Post</button>
+        </div>
+    <% end %>
+</article>

@@ -16,6 +16,10 @@ body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+.hidden {
+    display: none;
+}
+
 .notice-container {
     height: 8px;
     margin-left: 16px;
@@ -69,6 +73,7 @@ a {
 
  .post-display {
     display: grid;
+    gap: 8px;
     /* The below CSS is for auto-arranging multiple posts */
     /* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
  }
@@ -78,9 +83,12 @@ a {
     padding: 15px;
  }
 
-.post {
+.post,
+.new-post {
+    display: flex;
+    flex-direction: column;
     background-color: #89B0AE;
-    padding: 16px;
+    padding: 8px;
 }
 .post a {
     color: #FFD6BA
@@ -106,7 +114,8 @@ a {
     font-size: 1.2rem;
 }
 
-.likes-button button {
+.likes-button button,
+.post-btn {
     background-color: #FFD6BA;
     border: 1px solid #555B6E;
     font-size: 1rem;
@@ -172,4 +181,12 @@ a {
 }
 .hint {
     font-size: smaller;
+}
+.post-btn {
+    background-color: #555B6E;
+    color: #FAf9f9;
+}
+.new-post {
+    padding: 16px;
+    gap: 16px;
 }
