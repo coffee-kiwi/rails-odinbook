@@ -5,7 +5,8 @@
 # `$XDG_CONFIG_HOME/git/ignore` or `~/.config/git/ignore`
 
 
-gsckeyfile.json
+gsckeyfile
+gcskeyfile.json
 
 # Ignore bundler config.
 /.bundle
