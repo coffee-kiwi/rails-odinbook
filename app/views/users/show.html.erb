@@ -4,18 +4,14 @@
         <p><%= @user.email %></p>
 
         <% if @user.avatar.attached? %>
-            <%= image_tag @user.avatar, style: "width: 100px; height: 100px; border-radius: 50%;" %>
+            <%= image_tag @user.avatar,　alt: "#{@user.username}'s Avatar", style: "width: 100px; height: 100px; border-radius: 50%;" %>
         <% elsif @user.avatar_url %>
-            <%= image_tag @user.avatar_url, alt: "#{@user.username}'s Avatar", class: "avatar" %>
+            <%= image_tag @user.avatar_url, alt: "#{@user.username}'s Avatar", class: "avatar",　style: "width: 100px; height: 100px; border-radius: 50%;" %>
         <% else %>
             <p>No avatar yet</p>
             <!-- Fallback placeholder image if no avatar is uploaded -->
-            <%= image_tag ("/default-avatar.jpg"), style: "width: 100px; height: 100px;" %>
-        <% end %>
-
-        <%# <% if @user.avatar_url %> 
-            <%# <%= image_tag @user.avatar_url, alt: "#{@user.username}'s Avatar", class: "avatar" %> 
-        <%# <% end %> 
+            <%= image_tag ("default-avatar.jpg"),　alt: "#{@user.username}'s Avatar", style: "width: 100px; height: 100px; border-radius: 50%;" %>
+        <% end %> 
 
         <div class="edit-link">
             <%= link_to "Update my details", edit_user_path(current_user) %>
