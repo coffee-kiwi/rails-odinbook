@@ -18,7 +18,7 @@ local:
 google:
   service: GCS
   project: odinbook-storage
-  credentials: <%= Rails.root.join("/etc/secrets/gsckeyfile") %>
+  credentials: <%= Rails.root.join("/etc/secrets/gcskeyfile") %>
   bucket: odinbook-avatar-bucket
 
 # Use bin/rails credentials:edit to set the GCS secrets (as gcs:private_key_id|private_key)
