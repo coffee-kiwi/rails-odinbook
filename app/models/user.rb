@@ -6,7 +6,12 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[google_oauth2 github]
 
 
-  has_one_attached :avatar
+  has_one_attached :avatar do |attachable|
+  attachable.variant :thumb, resize_to_limit: [ 100, 100 ]
+  end
+  # , service: :google do |attachable|
+  # attachable.variant :thumb, resize_to_limit: [ 100, 100 ]
+  # end
 
   has_many :posts, dependent: :destroy
 

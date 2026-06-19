@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+    @user.avatar.attach(params[:avatar])
 
     if @user.update(update_params)
       redirect_to @user, notice: "Profile successfully updated"
@@ -32,6 +33,6 @@ class UsersController < ApplicationController
   end
 
   def update_params
-    params.expect(user: [ :username, :bio ])# avatar_url
+    params.expect(user: [ :username, :bio, :avatar ])
   end
 end
