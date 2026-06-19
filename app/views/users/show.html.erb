@@ -8,9 +8,7 @@
         <% elsif @user.avatar_url %>
             <%= image_tag @user.avatar_url, alt: "#{@user.username}'s Avatar", class: "avatar",　style: "width: 100px; height: 100px; border-radius: 50%;" %>
         <% else %>
-            <p>No avatar yet</p>
-            <!-- Fallback placeholder image if no avatar is uploaded -->
-            <%= image_tag ("default-avatar.jpg"),　alt: "#{@user.username}'s Avatar", style: "width: 100px; height: 100px; border-radius: 50%;" %>
+            <%= image_tag ("default_avatar.jpg"), alt: "#{@user.username}'s Avatar", class: "avatar", style: "width: 100px; height: 100px; border-radius: 50%;" %>
         <% end %> 
 
         <div class="edit-link">
