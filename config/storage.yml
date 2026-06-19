@@ -18,7 +18,7 @@ local:
 # google:
 #   service: GCS
 #   project: odinbook-storage
-#   credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
+#   credentials: <%= Rails.root.join("/gcs.keyfile") %>
 #   bucket: your_own_bucket-<%= Rails.env %>
 
 # Use bin/rails credentials:edit to set the GCS secrets (as gcs:private_key_id|private_key)
@@ -35,8 +35,8 @@ google:
     token_uri: "https://oauth2.googleapis.com/token"
     auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs"
     client_x509_cert_url: ENV["CLIENT_URL"]
-  project: ""
-  bucket: ENV["BUCKET"]
+  project: "odinbook"
+  bucket: odinbook-avatar-bucket
 
 
 # mirror:
