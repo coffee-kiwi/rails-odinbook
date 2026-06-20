@@ -149,6 +149,8 @@ a {
     background-color: #6f7c80;
     padding: 8px 16px;
     border-radius: 10px;
+    width: 75vw;
+    min-width: 275px;
 }
 
 .displayed-comment,

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action lambda {
-    resize_before_save(avatar_params, 300, 300)
+    resize_before_save(avatar_params, 100, 100)
   }, only: [ :update ]
   def index
     @users = User.all

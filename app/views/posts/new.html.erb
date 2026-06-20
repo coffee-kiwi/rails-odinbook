@@ -13,6 +13,12 @@
             <p class="hidden"><%= form.label :body %></p>
             <p><%= form.text_area :body, size: "30x10" %></p>
         </div>
+
+        <div class="avatar-field">
+            <p><%= form.label :avatar %></p>
+            <p><%= form.file_field :avatar %></p>
+        </div>
+        
         <div>
             <button type="submit" class="post-btn">Create Post</button>
         </div>

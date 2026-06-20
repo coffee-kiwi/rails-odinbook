@@ -10,6 +10,10 @@
             <%= @post.body%>
         </div>
 
+        <% if @post.avatar.attached? %>
+            <%= image_tag @post.avatar %>
+        <% end %>
+
         <div class="likes">
             <p>Likes <%= @post.likes.count %></p>
         </div>
