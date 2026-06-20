@@ -29,6 +29,15 @@ body {
     font-style: italic;
 }
 
+.profile-header {
+    display: flex;
+    align-items: center;
+    background-color: #555B6E;
+    color:#FAf9f9;
+    gap: 24px;
+    padding: 8px;
+}
+
 a {
     text-decoration: none;
     color: #FAf9f9;
@@ -50,10 +59,6 @@ a {
     padding: 1vh;
 }
  .nav-links, .login-links {
-    /* display: flex;
-    justify-content: start;
-    align-items: center;
-    gap: 3rem; */
     padding-left: 3rem;
  }
 
@@ -62,14 +67,14 @@ a {
     padding-right: 3rem;
  }
 
-
 /* Below for post styling */
 .page-wrapper,
  .post-wrapper,
- .user-wrapper,
- .new-post {
+ .user-wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 16px;
     gap: 16px
  }
@@ -94,6 +99,12 @@ a {
     background-color: #6f7c80;
     padding: 8px;
 }
+
+.new-post {
+    width: 50vw;
+    min-width: 500px;
+}
+
 .post a {
     color: #FFD6BA
 }
@@ -170,6 +181,7 @@ a {
     align-items: center;
     background-color: #6f7c80;
     width: 50vw;
+    max-width: 500px;
     gap: 8px;
     border-radius: 5px;
     padding: 16px 0;
@@ -259,3 +271,28 @@ a {
 .edit-link  a {
     color: #555B6E;
 }
+
+ /* Code to target alignment for smartphone devices */
+
+@media screen and (max-width: 767px) {
+  .post-wrapper,
+  .new-post,
+  .user-wrapper,
+  .form
+   {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form {
+    min-width: 280px;
+  }
+
+  .avatar-field p {
+    margin-left: 80px;
+  }
+}
+
+
+ /* End code for targeting smartphone devices */
