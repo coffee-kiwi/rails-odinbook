@@ -224,6 +224,8 @@ a {
     /* flex-direction: row; */
     align-items: space-around;
     justify-content: center;
+    width: 75vw;
+    min-width: 300px;
     /* height: 10vh; */
 }
 
