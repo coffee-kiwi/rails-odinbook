@@ -5,10 +5,8 @@
         <%= form_with model: @post do |form| %>
         <div class ="form-new-post">
             <div class="post-title">
-                <p>
-                    <%= form.label :title %>
-                    <%= form.text_field :title %>
-                </p>
+                <p><%= form.label :title %></p>
+                <p><%= form.text_field :title %></p>
             </div>
             <div>
                 <p class="hidden"><%= form.label :body %></p>

@@ -96,6 +96,10 @@ a:focus,
     gap: 16px;
  }
 
+ .user-page {
+    width: 75vw;
+ }
+
  .post-display {
     display: grid;
     gap: 8px;
@@ -166,6 +170,7 @@ a:focus,
     font-size: 1rem;
     padding: 8px;
     border-radius: 5px;
+    color:#393e46;
 }
 
 /* Below for post Show styling */
@@ -266,6 +271,7 @@ a:focus,
     justify-content: space-around;
     align-items: center;
 }
+
 .invitation {
     justify-content: space-evenly;
     /* gap: 120px; */
@@ -283,6 +289,7 @@ a:focus,
 .user-page {
     gap: 8px;
     justify-content: center;
+    align-items: space-around;
 }
 .avatar {
     width: 25vw;
