@@ -121,7 +121,8 @@ a:focus,
     border-radius: 5px;
     width: 75vw;
 }
-.user-page .post {
+.user-page, 
+.post {
     width: 75vw;
 }
 
@@ -158,11 +159,12 @@ a:focus,
 
 .like-buttons button,
 .post-btn,
-.user .follow-btn {
-    background-color: #393e46ß;
+.user .follow-btn,
+.comment-btn {
+    background-color: #FAf9f9;
     border: 1px solid #393e46;
     font-size: 1rem;
-    padding: 8px 16px;
+    padding: 8px;
     border-radius: 5px;
 }
 
@@ -295,7 +297,7 @@ a:focus,
 }
 
  /* Code to target alignment for smartphone devices */
-
+/* 
 @media screen and (max-width: 767px) {
   /* .post-wrapper,
   /* .new-post, */
@@ -318,7 +320,7 @@ a:focus,
   /* .avatar-field p {
     margin-left: 80px;
   } */ 
-}
+/* } */ 
 
 
  /* End code for targeting smartphone devices */
