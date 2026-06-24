@@ -1,27 +1,29 @@
+<div class="post-wrapper">
+    
+        <h2>Create a new post</h2>
+        <article class="new-post">
+        <%= form_with model: @post do |form| %>
+        <div class ="form-new-post">
+            <div class="post-title">
+                <p>
+                    <%= form.label :title %>
+                    <%= form.text_field :title %>
+                </p>
+            </div>
+            <div>
+                <p class="hidden"><%= form.label :body %></p>
+                <p><%= form.text_area :body, size: "30x10" %></p>
+            </div>
 
-<article class="new-post">
-    <h2>Create a new post</h2>
-    <%= form_with model: @post do |form| %>
-    <div class ="form-new-post">
-        <div class="post-title">
-            <p>
-                <%= form.label :title %>
-                <%= form.text_field :title %>
-            </p>
+            <div class="avatar-field">
+                <p><%= form.label :avatar %></p>
+                <p><%= form.file_field :avatar %></p>
+            </div>
+            
+            <div>
+                <button type="submit" class="post-btn">Create Post</button>
+            </div>
         </div>
-        <div>
-            <p class="hidden"><%= form.label :body %></p>
-            <p><%= form.text_area :body, size: "30x10" %></p>
-        </div>
-
-        <div class="avatar-field">
-            <p><%= form.label :avatar %></p>
-            <p><%= form.file_field :avatar %></p>
-        </div>
-        
-        <div>
-            <button type="submit" class="post-btn">Create Post</button>
-        </div>
-    </div>
-    <% end %>
-</article>
+        <% end %>
+    </article>
+</div>

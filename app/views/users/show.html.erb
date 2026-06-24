@@ -12,13 +12,15 @@
         <% end %> 
 
         <div class="edit-link">
-            <%= link_to "Update my details", edit_user_path(current_user) %>
+            <p>
+                <%= link_to "Update my details", edit_user_path(current_user) %>
+            </p>
         </div>
+        <p class="bio-title">Bio:</p>
         <article class="bio-wrapper">
-            <p class="bio-title">Bio:</p>
             <p class="bio"><%=@user.bio%></p>
         </article>
-        
+        <p class="post-title">Posts:</p>
         <% @posts.each do |post| %>
             <article class="post">
                 <p class="post-title"><%= post.title%></p>

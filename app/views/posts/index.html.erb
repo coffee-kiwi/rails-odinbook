@@ -13,7 +13,9 @@
                 <p class="title"><%=post.title%></p>
                 <% user = post.user %>
                 <p class="author"><%= user.username%></p>
-                <%= link_to "Take a read", post_path(post) %>
+                <p class="read">
+                    <%= link_to "Take a read", post_path(post) %>
+                </p>
                 <p class="post-body"><%= post.body %></p>
 
                 <div class="like-count">

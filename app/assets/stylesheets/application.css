@@ -12,7 +12,8 @@
     margin: 0;
 }
 body {
-    background-color: #FAf9f9;
+    background-color: #222831;
+    color: #FAf9f9;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -32,7 +33,7 @@ body {
 .profile-header {
     display: flex;
     align-items: center;
-    background-color: #555B6E;
+    background-color: #393e46;
     color:#FAf9f9;
     gap: 24px;
     padding: 8px;
@@ -42,6 +43,21 @@ a {
     text-decoration: none;
     color: #FAf9f9;
     font-size: large;
+    padding: 8px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+p a {
+    padding: 4px;
+}
+
+a:hover,
+a:focus,
+.post a:hover,
+.post a:focus {
+    background-color: #FAf9f9;
+    color: #393e46;
 }
 
  .alert {
@@ -52,7 +68,7 @@ a {
     display: grid;
     grid-template-columns: repeat( auto-fit, minmax(120px, 1fr) );;
     height: 3rem;
-    background-color: #555B6E;
+    background-color: #393e46;
     height: 10vh;
     justify-items: center;
     align-items: center;
@@ -71,12 +87,13 @@ a {
 .page-wrapper,
  .post-wrapper,
  .user-wrapper {
+    background-color: #222831;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 16px;
-    gap: 16px
+    gap: 16px;
  }
 
  .post-display {
@@ -93,21 +110,30 @@ a {
 
 .post,
 .new-post,
-.user {
+.user,
+.bio-wrapper {
     display: flex;
     flex-direction: column;
-    background-color: #6f7c80;
+    justify-content: center;
+    align-items: center;
+    background-color: #393e46;
     padding: 8px;
+    border-radius: 5px;
+    width: 75vw;
+}
+.user-page .post {
+    width: 75vw;
 }
 
 .new-post {
     align-items: center;
     width: 50vw;
-    min-width: 500px;
+    min-width: 300px;
 }
 
 .post a {
-    color: #FFD6BA
+    background-color: #393e46;
+    color: #FAf9f9
 }
 
 .post p, 
@@ -130,11 +156,11 @@ a {
     font-size: 1.2rem;
 }
 
-.likes-button button,
+.like-buttons button,
 .post-btn,
 .user .follow-btn {
-    background-color: #DAD8C9;
-    border: 1px solid #555B6E;
+    background-color: #393e46ß;
+    border: 1px solid #393e46;
     font-size: 1rem;
     padding: 8px 16px;
     border-radius: 5px;
@@ -146,7 +172,7 @@ a {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    background-color: #6f7c80;
+    background-color: #393e46;
     padding: 8px 16px;
     border-radius: 10px;
     width: 75vw;
@@ -173,7 +199,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #FAf9f9;
+    background-color: #222831;
     margin: 14px 0;
 }
 
@@ -182,7 +208,7 @@ a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #6f7c80;
+    background-color: #393e46;
     width: 50vw;
     max-width: 500px;
     gap: 8px;
@@ -227,7 +253,6 @@ a {
     /* flex-direction: row; */
     align-items: space-around;
     justify-content: center;
-    width: 75vw;
     min-width: 300px;
     /* height: 10vh; */
 }
@@ -263,16 +288,8 @@ a {
     background-color: #98b464;
 }
 
-.user-page .post {
-    width: 80vw;
-}
 
-.bio-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80vw;
-}
+
 .edit-link  a {
     color: #555B6E;
 }
@@ -280,27 +297,27 @@ a {
  /* Code to target alignment for smartphone devices */
 
 @media screen and (max-width: 767px) {
-  .post-wrapper,
-  .new-post,
-  .user-wrapper,
-  .form
+  /* .post-wrapper,
+  /* .new-post, */
+  /* .user-wrapper, */
+  /* .form
    {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
+  } */
 
-  .new-post {
-    min-width: 300px;
-  }
+  /* .new-post {
+    min-width: 350px;
+  } */
 
-  .form {
+  /* .form {
     min-width: 280px;
-  }
+  } */
 
-  .avatar-field p {
+  /* .avatar-field p {
     margin-left: 80px;
-  }
+  } */ 
 }
 
 

@@ -1,25 +1,27 @@
 <div class="page-wrapper">
     <h1>Edit my information:</h1>
-    <%= form_with model: @user do |form| %>
-        <div class="form">
-            <div>
-                <p><%= form.label :username %></p>
-                <p><%= form.text_field :username %></p>
-            </div>
+    <article class="user">
+        <%= form_with model: @user do |form| %>
+            <div class="form">
+                <div>
+                    <p><%= form.label :username %></p>
+                    <p><%= form.text_field :username %></p>
+                </div>
 
-            <div>
-                <p><%= form.label :bio %></p>
-                <p><%= form.text_area :bio %></p>
-            </div>
+                <div>
+                    <p><%= form.label :bio %></p>
+                    <p><%= form.text_area :bio %></p>
+                </div>
 
-            <div class="avatar-field">
-                <p><%= form.label :avatar %></p>
-                <p><%= form.file_field :avatar %></p>
-            </div>
+                <div class="avatar-field">
+                    <p><%= form.label :avatar %></p>
+                    <p><%= form.file_field :avatar %></p>
+                </div>
 
-            <div>
-                <button type="submit" class="post-btn">Update Profile</button>
+                <div>
+                    <button type="submit" class="post-btn">Update Profile</button>
+                </div>
             </div>
-        </div>
-    <% end %>
+        <% end %>
+    </article>
 </div>

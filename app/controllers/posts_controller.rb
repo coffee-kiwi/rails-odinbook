@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  #   before_action lambda {
-  #   resize_before_save(avatar_params, 300, 300)
-  # }, only: [ :create ]
+    before_action lambda {
+    resize_before_save(avatar_params, 300, 300)
+  }, only: [ :create ]
 
   def index
     @posts = Post.order(created_at: :desc)
