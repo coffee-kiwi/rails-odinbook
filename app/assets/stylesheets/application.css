@@ -265,10 +265,15 @@ a:focus,
 }
 
 .user-display,
-.invitation,
+.invitation{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 75vw;
+}
+
 .inv-btn {
     display: flex;
-    justify-content: space-around;
+    justify-content: start;
     align-items: center;
 }
 

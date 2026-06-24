@@ -13,10 +13,10 @@
                     <% else %>
                         <%= button_to "Ask to Follow", follower_requests_path, method: :post, params: { recipient: user.id }, class: "follow-btn" %>
                     <% end %>
-                </div>
+                <%# </div> %>
                 
                 <% if @follow_requests.where("user_id = ?", user.id).exists? %>
-                    <div class="invitation">
+                    <%# <div class="invitation"> %>
                         <p> <%= user.username %> has asked to follow you</p>
                         <div class="inv-btn">
                             <% follow_request_id = @follow_requests.find_by("user_id = ?", user.id).id %>
