@@ -238,7 +238,6 @@ a:focus,
     display: flex;
     justify-content: space-around;
     width: 50%;
-    background-color: #FAf9f9;
 }
 .oauth-buttons .button_to {
     width: 75px;
