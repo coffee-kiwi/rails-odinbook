@@ -84,21 +84,7 @@ a:focus,
  }
 
 /* Below for post styling */
-.page-wrapper,
- .post-wrapper,
- .user-wrapper {
-    background-color: #222831;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 16px;
-    gap: 16px;
- }
 
- .user-page {
-    width: 75vw;
- }
 
  .post-display {
     display: grid;
@@ -113,29 +99,64 @@ a:focus,
  }
 
  /* DRY code and add flex for column centering below: */
-
 .post,
 .new-post,
 .user,
 .bio-wrapper,
-.bio-section {
+.bio-section,
+.comments-section,
+.comment-wrapper,
+.displayed-comment,
+.new-comment,
+.form,
+.page-wrapper,
+ .post-wrapper,
+ .user-wrapper, 
+.login-wrapper,
+.user-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+
+/* DRY code by adding background colors here */
+.post,
+.new-post,
+.user,
+.bio-wrapper,
+.bio-section,
+.comments-section,
+.comment-wrapper,
+.displayed-comment,
+.user-wrapper
+.new-comment {
     background-color: #393e46;
     padding: 8px;
     border-radius: 10px;
     width: 75vw;
 }
+
+.page-wrapper,
+ .post-wrapper,
+ .user-wrapper, 
+ .comments-section,
+.comment-wrapper {
+    background-color: #222831;
+    margin: 16px;
+    gap: 16px;
+ }
+
+ .user-page {
+    gap: 8px;
+    width: 75vw;
+    align-items: space-around;
+}
+
 .bio-section {
     background-color: #222831;
     gap: 8px;
-}
-
-.user-page, 
-.post {
-    width: 75vw;
 }
 
 .new-post {
@@ -182,25 +203,6 @@ a:focus,
 }
 
 /* Below for post Show styling */
-.comments-section,
-.comment-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    background-color: #393e46;
-    padding: 8px 16px;
-    border-radius: 10px;
-    width: 75vw;
-    min-width: 275px;
-}
-
-.displayed-comment,
-.new-comment {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
 .form-title,
 .post-title {
     font-size: 1.3rem;
@@ -209,19 +211,11 @@ a:focus,
 
 .login-wrapper,
 .user-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: #222831;
     margin: 14px 0;
 }
 
 .form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: #393e46;
     width: 50vw;
     max-width: 500px;
@@ -264,11 +258,7 @@ a:focus,
 
 /* Users index below */
 .user {
-    /* flex-direction: row; */
-    align-items: space-around;
-    justify-content: center;
     min-width: 300px;
-    /* height: 10vh; */
 }
 
 .user-display,
@@ -276,6 +266,7 @@ a:focus,
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 75vw;
+    align-items: center;
 }
 
 .inv-btn {
@@ -298,11 +289,7 @@ a:focus,
 
 /* Users show page */
 
-.user-page {
-    gap: 8px;
-    justify-content: center;
-    align-items: space-around;
-}
+
 .avatar {
     width: 25vw;
     height: 25vw;
