@@ -18,7 +18,7 @@ body {
 }
 
 .hidden {
-    display: none;
+    visibility: hidden;
 }
 
 .notice-container {
