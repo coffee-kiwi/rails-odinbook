@@ -112,6 +112,8 @@ a:focus,
     padding: 15px;
  }
 
+ /* DRY code and add flex for column centering below: */
+
 .post,
 .new-post,
 .user,
@@ -305,38 +307,3 @@ a:focus,
     width: 25vw;
     height: 25vw;
 }
-
-
-
-.edit-link  a {
-    color: #555B6E;
-}
-
- /* Code to target alignment for smartphone devices */
-/* 
-@media screen and (max-width: 767px) {
-  /* .post-wrapper,
-  /* .new-post, */
-  /* .user-wrapper, */
-  /* .form
-   {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  } */
-
-  /* .new-post {
-    min-width: 350px;
-  } */
-
-  /* .form {
-    min-width: 280px;
-  } */
-
-  /* .avatar-field p {
-    margin-left: 80px;
-  } */ 
-/* } */ 
-
-
- /* End code for targeting smartphone devices */
