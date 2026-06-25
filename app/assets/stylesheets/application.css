@@ -130,8 +130,9 @@ a:focus,
 .comments-section,
 .comment-wrapper,
 .displayed-comment,
-.user-wrapper
-.new-comment {
+.user-wrapper,
+.new-comment,
+.login-wrapper {
     background-color: #393e46;
     padding: 8px;
     border-radius: 10px;
@@ -222,6 +223,7 @@ a:focus,
     gap: 8px;
     border-radius: 5px;
     padding: 16px 0;
+    min-width: 280px;
 }
 
 .form-new-post {
