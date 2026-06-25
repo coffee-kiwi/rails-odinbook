@@ -19,9 +19,12 @@ body {
     color: #FAf9f9;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
 main {
     flex-grow: 1;
 }
+
+
 
 .notice-container {
     height: 8px;
@@ -50,16 +53,33 @@ a {
     transition: all 0.3s ease-in-out;
 }
 
-p a {
-    padding: 4px;
-}
-
 a:hover,
 a:focus,
 .post a:hover,
 .post a:focus {
     background-color: #FAf9f9;
     color: #393e46;
+}
+
+.skip-div {
+    background-color: #393e46;
+}
+.skip-link {
+    font-size: medium;
+    opacity: 0;
+    transition: opacity 0.25s ease-in;
+    padding: 4px 8px 4px 8px;
+}
+.skip-link:focus {
+    background-color: #FAf9f9;
+    opacity: 1;
+}
+.skip-link a {
+    font-size: medium;
+}
+
+p a {
+    padding: 4px;
 }
 
  .alert {

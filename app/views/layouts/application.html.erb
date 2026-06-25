@@ -27,6 +27,9 @@
   </head>
 
   <body>
+    <div class="skip-div">
+      <%= link_to "Skip to main content", "#main-content", class: "skip-link"%>
+    </div>
     <nav class="navbar">
           <%= link_to "Posts", root_path %>
           <%= link_to "New post", new_post_path %>
@@ -67,7 +70,7 @@
       <p></p>
       <% end %>
     </div>
-    <main>
+    <main id="main-content">
     <%= yield %>
     </main>
     <footer>
