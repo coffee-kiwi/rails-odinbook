@@ -109,7 +109,8 @@ a:focus,
  .post-wrapper,
  .user-wrapper, 
 .login-wrapper,
-.user-page {
+.user-page,
+footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -126,9 +127,7 @@ a:focus,
 .comments-section,
 .comment-wrapper,
 .displayed-comment,
-.user-wrapper,
-.new-comment,
-.login-wrapper {
+.new-comment {
     background-color: #393e46;
     padding: 8px;
     border-radius: 10px;
@@ -291,4 +290,9 @@ a:focus,
 .avatar {
     width: 25vw;
     height: 25vw;
+}
+
+footer {
+    height: 10vh;
+    background-color: #393e46;
 }
