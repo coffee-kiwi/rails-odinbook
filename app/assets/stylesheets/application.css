@@ -310,12 +310,11 @@ footer {
     background-color: #d67229;
 }
 
-/* Users show page */
+/* Sign-up page */
 
 
 .avatar {
-    width: 25vw;
-    height: 25vw;
+    width: 150px;
 }
 
 footer {
