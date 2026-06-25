@@ -1,5 +1,5 @@
-<div class="page-wrapper"> 
-    <div class="comment-wrapper">   
+<section class="page-wrapper"> 
+    <section class="comment-wrapper">   
         <div class="author">
             <h3><%= @post.user.username %></h3>
         </div>
@@ -28,9 +28,9 @@
                 <%# Maybe send @post.id? %>
             <% end %>
         </div>
-    </div>
+    </section>
     <h3>Comments for this post:</h3>
-    <div class="comments-section">
+    <section class="comments-section">
         
         <div class="displayed-comment">
             <% if @post.comments.exists? %> 
@@ -49,5 +49,5 @@
                 <%= render "comments/new_comment", post: @post %>
             <% end %>
         </div>
-    </div>
-</div>
+    </section>
+</section>

@@ -1,4 +1,4 @@
-<div class="user-wrapper">
+<section class="user-wrapper">
     <div class="user-page">
         <h2><%= @user.username %></h2>
         <p><%= @user.email %></p>
@@ -16,10 +16,12 @@
                 <%= link_to "Update my details", edit_user_path(current_user) %>
             </p>
         </div>
-        <p class="bio-title">Bio:</p>
-        <article class="bio-wrapper">
-            <p class="bio"><%=@user.bio%></p>
-        </article>
+        <section class="bio-section">
+            <p class="bio-title">Bio:</p>
+            <article class="bio-wrapper">
+                <p class="bio"><%=@user.bio%></p>
+            </article>
+        </section>
         <p class="post-title">Posts:</p>
         <% @posts.each do |post| %>
             <article class="post">
@@ -28,4 +30,4 @@
             </article>
         <% end %>
     </div>
-</div>
+</section>

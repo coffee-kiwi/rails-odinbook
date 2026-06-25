@@ -115,16 +115,21 @@ a:focus,
 .post,
 .new-post,
 .user,
-.bio-wrapper {
+.bio-wrapper,
+.bio-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #393e46;
     padding: 8px;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 75vw;
 }
+.bio-section {
+    background-color: #222831;
+}
+
 .user-page, 
 .post {
     width: 75vw;
