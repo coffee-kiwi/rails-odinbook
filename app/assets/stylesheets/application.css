@@ -128,6 +128,7 @@ a:focus,
 }
 .bio-section {
     background-color: #222831;
+    gap: 8px;
 }
 
 .user-page, 
@@ -152,12 +153,12 @@ a:focus,
 }
 
 .title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
 }
 
 .author {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
 }
 
@@ -199,7 +200,6 @@ a:focus,
 }
 
 .form-title,
-.bio-title,
 .post-title {
     font-size: 1.3rem;
     font-weight: 500;
