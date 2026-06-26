@@ -12,7 +12,10 @@
             <article class="post">
                 <p class="title"><%=post.title%></p>
                 <% user = post.user %>
-                <p class="author"><%= user.username%></p>
+                <div class="author">
+                    <%# How to insert author's avatar next to name? %>
+                    <p class="author"><%= user.username%></p>
+                </div>
                 <p class="read">
                     <%= link_to "Take a read", post_path(post) %>
                 </p>
