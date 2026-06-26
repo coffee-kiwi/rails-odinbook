@@ -28,6 +28,11 @@ require "mini_magick"
     @my_like = Like.find_by("user_id = ? AND post_id = ?", current_user.id, @post.id)
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_path, notice: "Post deleted successfully"
+  end
   private
 
   def post_params
