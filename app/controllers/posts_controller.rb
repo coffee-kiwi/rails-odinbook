@@ -1,8 +1,5 @@
 class PostsController < ApplicationController
-    before_action lambda {
-    resize_before_save(avatar_params, 300, 300)
-  }, only: [ :create ]
-
+require "mini_magick"
   def index
     @posts = Post.order(created_at: :desc)
     @followers_id = current_user.follower_requests.accepted.pluck(:recipient_id)
@@ -16,6 +13,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new
+    resize_image_by_orientation
     @post.avatar.attach(params[:avatar])
     @post = current_user.posts.build(post_params)
     if @post.save!
@@ -40,18 +38,26 @@ class PostsController < ApplicationController
     params.expect(post: [ :avatar ])
   end
 
-  def resize_before_save(image_param, width, height)
-    return unless image_param
+  def resize_image_by_orientation
+    # Adjust ':post' and ':image' to match your model name and param key
+    return unless params[:post] && params[:post][:avatar]
 
-    begin
-      ImageProcessing::MiniMagick
-        .source(image_param)
-        .resize_to_fit(width, height)
-        .call(destination: image_param.tempfile.path)
-    rescue StandardError => _e
-      # Do nothing. If this is catching, it probably means the
-      # file type is incorrect, which can be caught later by
-      # model validations.
+    image_param = params[:post][:avatar]
+
+    # Initialize MiniMagick over the uploaded tempfile
+    pipeline = ImageProcessing::MiniMagick.source(image_param.tempfile.path)
+    image = MiniMagick::Image.open(image_param.tempfile.path)
+
+    # Determine orientation by comparing width and height
+    if image.width > image.height
+      # Landscape bounds
+      pipeline = pipeline.resize_to_limit(1200, 400)
+    else
+      # Portrait bounds (or square)
+      pipeline = pipeline.resize_to_limit(400, 600)
     end
+
+    # Overwrite the original temporary file with the processed version
+    pipeline.call(destination: image_param.tempfile.path)
   end
 end

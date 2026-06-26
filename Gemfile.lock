@@ -567,6 +567,7 @@ DEPENDENCIES
   jbuilder
   kamal
   letter_opener
+  mini_magick
   mission_control-jobs
   omniauth
   omniauth-github

@@ -3,7 +3,7 @@
     <section class="comment-wrapper">  
         
         <div class="author">
-            <h3><%= @post.user.username %></h3>
+            <h2><%= @post.user.username %></h2>
         </div>
 
         <div class="post-body">
@@ -11,7 +11,7 @@
         </div>
 
         <% if @post.avatar.attached? %>
-            <%= image_tag @post.avatar, alt: "#{@post.user.username}'s avatar" %>
+            <%= image_tag @post.avatar, alt: "#{@post.user.username}'s post picture"%>
         <% end %>
 
         <div class="likes">
@@ -21,11 +21,8 @@
         <div class="like-buttons">
             <% if @my_like %>
                 <%= button_to "Unlike", post_like_path(@post.id, @my_like.id), method: :delete %>
-
-                <%# <%= button_to "Unlike", {:controller => :likes, action: :destroy, :id => @my_liked_posts }, method: :delete, data: { turbo_confirm: "Are you sure?" } %> 
             <% else %>
                 <%= button_to "Like", post_likes_path(@post), method: :post, params: { post: @post } %>
-                <%# Maybe send @post.id? %>
             <% end %>
         </div>
     </section>

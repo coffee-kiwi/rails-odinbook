@@ -26,5 +26,8 @@ module Odinbook
     #
     # Remove authentication for mission control to see it easier
     config.mission_control.jobs.http_basic_auth_enabled = false
+
+    # Change image processing
+    Rails.application.config.active_storage.variant_processor = :mini_magick
   end
 end
