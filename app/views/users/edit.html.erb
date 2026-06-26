@@ -10,11 +10,12 @@
 
                 <div>
                     <p><%= form.label :bio %></p>
-                    <p><%= form.text_area :bio %></p>
+                    <p><%= form.text_area :bio, size: "17x2" %></p>
                 </div>
 
                 <div class="avatar-field">
                     <p><%= form.label :avatar %></p>
+                    <p style="font-size: smaller">*Please upload a picture file</p>
                     <p><%= form.file_field :avatar %></p>
                 </div>
 

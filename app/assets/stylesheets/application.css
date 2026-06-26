@@ -313,7 +313,8 @@ footer {
 /* Sign-up page */
 
 
-.avatar {
+.avatar,
+.avatar-field {
     width: 150px;
 }
 

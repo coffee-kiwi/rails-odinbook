@@ -16,16 +16,28 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    params[:avatar] = @user.avatar
+    Rails.logger.info "EDIT This message will be written to your log file EDIT."
   end
 
   def update
     @user = current_user
-    @user.avatar.attach(params[:avatar])
+    Rails.logger.info "UDPATE: This message will be written to your log file."
 
-    if @user.update(update_params)
-      redirect_to @user, notice: "Profile successfully updated"
+    if params[:user][:avatar].present?
+      @user.avatar.attach(params[:user][:avatar])
+      if @user.update(update_params)
+        redirect_to @user, notice: "Profile successfully updated"
+      else
+        render :edit, status: :unprocessable_entity
+      end
     else
-      render :edit, status: :unprocessable_entity
+      @user.avatar.attach(params[:avatar])
+      if @user.update(update_params)
+        redirect_to @user, notice: "Profile successfully updated"
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 
@@ -36,8 +48,13 @@ class UsersController < ApplicationController
   end
 
   def update_params
-    params.expect(user: [ :username, :bio, :avatar ])
+    if params[:user][:avatar].present?
+      params.expect(user: [ :username, :bio, :avatar ])
+    else
+      params.expect(user: [ :username, :bio ])
+    end
   end
+
 
   def avatar_params
     params.expect(user: [ :avatar ])

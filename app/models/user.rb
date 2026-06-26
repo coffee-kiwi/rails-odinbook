@@ -59,4 +59,10 @@ class User < ApplicationRecord
     @user = User.last
     UserMailer.with(user: @user).welcome_email.deliver_later
   end
+
+  # def my_avatar_url(user)
+  #   if avatar.attached?
+  #     avatar
+  #   end
+  # end
 end
