@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
   before_action lambda {
+    if avatar_params.present?
     resize_before_save(avatar_params, 100, 100)
-  }, only: [ :update ]
+    end  }, only: [ :update ]
+
+    before_action lambda {
+    Rails.logger.info "params avatar is: #{param[:user][:avatar]}"
+     }, only: [ :update ]
   def index
     @users = User.all
     @my_pending_requests = FollowerRequest.where("user_id = ? AND status = ?", current_user.id, 1)
@@ -17,27 +22,22 @@ class UsersController < ApplicationController
   def edit
     @user = current_user
     params[:avatar] = @user.avatar
-    Rails.logger.info "EDIT This message will be written to your log file EDIT."
+    # Rails.logger.info "EDIT This message will be written to your log file EDIT."
   end
 
   def update
     @user = current_user
-    Rails.logger.info "UDPATE: This message will be written to your log file."
+    # Rails.logger.info "UDPATE: This message will be written to your log file."
+    avatar_param = params.dig(:user, :avatar)
 
-    if params[:user][:avatar].present?
-      @user.avatar.attach(params[:user][:avatar])
-      if @user.update(update_params)
-        redirect_to @user, notice: "Profile successfully updated"
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    if avatar_param.present?
+      @user.avatar.attach(avatar_param)
+    end
+
+    if @user.update(update_params)
+      redirect_to @user, notice: "Profile successfully updated"
     else
-      @user.avatar.attach(params[:avatar])
-      if @user.update(update_params)
-        redirect_to @user, notice: "Profile successfully updated"
-      else
-        render :edit, status: :unprocessable_entity
-      end
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -48,13 +48,8 @@ class UsersController < ApplicationController
   end
 
   def update_params
-    if params[:user][:avatar].present?
       params.expect(user: [ :username, :bio, :avatar ])
-    else
-      params.expect(user: [ :username, :bio ])
-    end
   end
-
 
   def avatar_params
     params.expect(user: [ :avatar ])

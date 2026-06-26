@@ -1,7 +1,7 @@
 <section class="page-wrapper">
     <h1>Edit my information:</h1>
     <article class="user">
-        <%= form_with model: @user do |form| %>
+        <%= form_with model: @user, html: { method: :put, multipart: true } do |form| %>
             <div class="form">
                 <div>
                     <p><%= form.label :username %></p>
@@ -15,7 +15,7 @@
 
                 <div class="avatar-field">
                     <p><%= form.label :avatar %></p>
-                    <p style="font-size: smaller">*Please upload a picture file</p>
+                    <p style="font-size: smaller">*required</p>
                     <p><%= form.file_field :avatar %></p>
                 </div>
 
