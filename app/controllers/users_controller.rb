@@ -4,9 +4,6 @@ class UsersController < ApplicationController
     resize_before_save(avatar_params, 100, 100)
     end  }, only: [ :update ]
 
-    before_action lambda {
-    Rails.logger.info "params avatar is: #{param[:user][:avatar]}"
-     }, only: [ :update ]
   def index
     @users = User.all
     @my_pending_requests = FollowerRequest.where("user_id = ? AND status = ?", current_user.id, 1)
@@ -22,22 +19,26 @@ class UsersController < ApplicationController
   def edit
     @user = current_user
     params[:avatar] = @user.avatar
-    # Rails.logger.info "EDIT This message will be written to your log file EDIT."
   end
 
   def update
     @user = current_user
-    # Rails.logger.info "UDPATE: This message will be written to your log file."
     avatar_param = params.dig(:user, :avatar)
 
     if avatar_param.present?
       @user.avatar.attach(avatar_param)
-    end
-
-    if @user.update(update_params)
-      redirect_to @user, notice: "Profile successfully updated"
-    else
-      render :edit, status: :unprocessable_entity
+      if @user.update(update_params)
+        redirect_to @user, notice: "Profile successfully updated"
+      else
+       render :edit, status: :unprocessable_entity
+      end
+      # else
+      #   filtered_params = update_params.except(:avatar)
+      #   if @user.update(filtered_params)
+      #     redirect_to @user, notice: "Profile successfully updated"
+      #   else
+      #     render :edit, status: :unprocessable_entity
+      #   end
     end
   end
 
