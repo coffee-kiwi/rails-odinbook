@@ -42,7 +42,7 @@ gem "solid_cable"
 gem "mission_control-jobs"
 
 # Add Google Cloud Storage gem for Active Storage
-gem "google-cloud-storage", "~> 1.11", require: false
+gem "google-cloud-storage", "~> 1.62", require: false
 
 
 
