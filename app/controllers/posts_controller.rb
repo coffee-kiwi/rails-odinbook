@@ -66,6 +66,6 @@ require "mini_magick"
     result = pipeline.call
     if result && File.size(result.path) > 0
       FileUtils.cp(result.path, image_param.tempfile.path)
-  
+    end
   end
 end
