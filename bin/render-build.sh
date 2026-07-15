@@ -4,8 +4,7 @@ set -o errexit
 
 # Try setting to install imagemagick
 apt-get update
-apt-get install -y imagemagick
-
+# apt-get install -y imagemagick
 
 bundle install
 bin/rails assets:precompile

@@ -12,11 +12,11 @@ require "mini_magick"
   end
 
   def create
-    @post = Post.new
+    # @post = Post.new
     resize_image_by_orientation
-    @post.avatar.attach(params[:avatar])
+    # @post.avatar.attach(params[:avatar])
     @post = current_user.posts.build(post_params)
-    if @post.save!
+    if @post.save
       redirect_to posts_path, notice: "Post successfully created"
     else
       render :new, status: :unprocessable_entity
@@ -46,13 +46,14 @@ require "mini_magick"
   def resize_image_by_orientation
     # Adjust ':post' and ':image' to match your model name and param key
     return unless params[:post] && params[:post][:avatar]
-
     image_param = params[:post][:avatar]
-
+    # Guard against non-attached avatars
+    return unless image_param.respond_to?(:tempfile)
+    
     # Initialize MiniMagick over the uploaded tempfile
-    pipeline = ImageProcessing::MiniMagick.source(image_param.tempfile.path)
+    pipeline = ImageProcessing::MiniMagick.source(image_param.tempfile.path).auto_orient
     image = MiniMagick::Image.open(image_param.tempfile.path)
-
+    image.auto_orient  
     # Determine orientation by comparing width and height
     if image.width > image.height
       # Landscape bounds
@@ -62,7 +63,9 @@ require "mini_magick"
       pipeline = pipeline.resize_to_limit(400, 600)
     end
 
-    # Overwrite the original temporary file with the processed version
-    pipeline.call(destination: image_param.tempfile.path)
+    result = pipeline.call
+    if result && File.size(result.path) > 0
+      FileUtils.cp(result.path, image_param.tempfile.path)
+  
   end
 end
