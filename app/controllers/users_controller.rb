@@ -18,7 +18,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
-    params[:avatar] = @user.avatar
   end
 
   def update
