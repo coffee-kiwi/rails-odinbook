@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action lambda {
-    if avatar_params.present?
-    resize_before_save(avatar_params, 100, 100)
-    end  }, only: [ :update ]
+  # before_action lambda {
+  #   if avatar_params.present?
+  #   resize_before_save(avatar_params, 100, 100)
+  #   end  }, only: [ :update ]
 
   def index
     @users = User.all
@@ -25,21 +25,12 @@ class UsersController < ApplicationController
     @user = current_user
     avatar_param = params.dig(:user, :avatar)
 
-    if avatar_param.present?
-      @user.avatar.attach(avatar_param)
-      if @user.update(update_params)
+    @user.avatar.attach(avatar_param) if avatar_param.present?
+      if @user.update(update_params.except(:avatar))
         redirect_to @user, notice: "Profile successfully updated"
       else
        render :edit, status: :unprocessable_entity
       end
-      # else
-      #   filtered_params = update_params.except(:avatar)
-      #   if @user.update(filtered_params)
-      #     redirect_to @user, notice: "Profile successfully updated"
-      #   else
-      #     render :edit, status: :unprocessable_entity
-      #   end
-    end
   end
 
   private
@@ -56,18 +47,18 @@ class UsersController < ApplicationController
     params.expect(user: [ :avatar ])
   end
 
-  def resize_before_save(image_param, width, height)
-    return unless image_param
+  # def resize_before_save(image_param, width, height)
+  #   return unless image_param
 
-    begin
-      ImageProcessing::MiniMagick
-        .source(image_param)
-        .resize_to_fit(width, height)
-        .call(destination: image_param.tempfile.path)
-    rescue StandardError => _e
-      # Do nothing. If this is catching, it probably means the
-      # file type is incorrect, which can be caught later by
-      # model validations.
-    end
-  end
+  #   begin
+  #     ImageProcessing::MiniMagick
+  #       .source(image_param)
+  #       .resize_to_fit(width, height)
+  #       .call(destination: image_param.tempfile.path)
+  #   rescue StandardError => _e
+  #     # Do nothing. If this is catching, it probably means the
+  #     # file type is incorrect, which can be caught later by
+  #     # model validations.
+  #   end
+  # end
 end
