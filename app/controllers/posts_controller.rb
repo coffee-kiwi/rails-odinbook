@@ -12,9 +12,7 @@ require "mini_magick"
   end
 
   def create
-    # @post = Post.new
     resize_image_by_orientation
-    # @post.avatar.attach(params[:avatar])
     @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to posts_path, notice: "Post successfully created"
