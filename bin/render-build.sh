@@ -13,4 +13,3 @@ bin/rails assets:clean
 # bin/rails solid_queue:install
 # bundle exec rake solid_queue:start
 bin/rails db:prepare
-bin/rails db:seed
