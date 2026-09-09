@@ -2,9 +2,11 @@
   <div class="form">
     <h2>Log in</h2>
     <div class="guest-login">
-      <h3>Guests login with this button:</h3>
-      <%= button_to "Guests login with this button", guest_sessions_path, method: :post %>
-      <button type="button">Guests login with this button</button>
+      <%= button_to guest_sessions_path, method: :post, class: "guest-button" do %>
+        Try Odinbook as a Guest<br>ゲストとしてOdinbookを試す
+        <% end %>
+        <br>
+      <p>────── or / または ──────</p>
     </div>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form">  
