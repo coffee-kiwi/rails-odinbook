@@ -11,11 +11,13 @@
             <%= image_tag ("default_avatar.jpg"), alt: "#{@user.username}'s Avatar", class: "avatar", style: "width: 100px; height: 100px; border-radius: 50%;" %>
         <% end %> 
 
-        <div class="edit-link">
-            <p>
-                <%= link_to "Update my details", edit_user_path(current_user) %>
-            </p>
-        </div>
+        <% if @user.email != "guest@example.com"  && @user == current_user %>
+            <div class="edit-link">
+                <p>
+                    <%= link_to "Update my details", edit_user_path(current_user) %>
+                </p>
+            </div>
+        <% end %>
         <section class="bio-section">
             <h2>Bio:</h2>
             <article class="bio-wrapper">

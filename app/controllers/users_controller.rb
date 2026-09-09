@@ -18,14 +18,19 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+    if @user.email == "guest@example.com"
+      return redirect_to @user, alert: "Sorry, the Guest account cannot be updated"
+    end
+
     avatar_param = params.dig(:user, :avatar)
 
     @user.avatar.attach(avatar_param) if avatar_param.present?
       if @user.update(update_params.except(:avatar))
         redirect_to @user, notice: "Profile successfully updated"
       else
-       render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
       end
+    
   end
 
   private

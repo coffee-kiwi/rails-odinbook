@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   #get "guest_sessions/create"
   root "posts#index"
   devise_for :users, controllers: {
-  omniauth_callbacks: "users/omniauth_callbacks"
+  omniauth_callbacks: "users/omniauth_callbacks",
+  registrations: "users/registrations"
 }
 
 
