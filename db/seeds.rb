@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# Create Guest login-user for recruiters to use
+guest = User.find_or_create_by!(email: "guest@example.com") do |user|
+    user.password = "111111"
+end
+
+guest.posts.find_or_create_by!(title: "Seed post") do |post|
+    post.body = "Hi there, this is a seeded post done by the guest account."
+end

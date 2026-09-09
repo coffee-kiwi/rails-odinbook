@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  #get "guest_sessions/create"
   root "posts#index"
   devise_for :users, controllers: {
   omniauth_callbacks: "users/omniauth_callbacks"
 }
-  # devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+
 
   resources :users, only: [ :index, :show, :edit, :update ]
   resources :posts, except: [ :edit, :update ] do
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   end
   resources :follower_requests, only: [ :create, :destroy ]
   resources :followings, only: [ :create ]
+  resources :guest_sessions, only: [ :create ]
 
   # Mount mission control job's engine
   mount MissionControl::Jobs::Engine, at: "/jobs"
