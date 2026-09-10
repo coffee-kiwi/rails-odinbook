@@ -15,7 +15,7 @@
 - To try out the application, visit: [odinbook-jiuf.onrender.com](https://odinbook-jiuf.onrender.com/)
 - You can explore Odinbook without creating an account by selecting "Try Odinbook as a Guest / ゲストとしてOdinbookを試す" on the login or sign-up page.
 - The Guest account can be used to try the application's main social features, including creating posts, commenting, liking posts, and interacting with other users. To keep the shared demo account consistent for future visitors, its profile and account information cannot be changed.
-- Odinbook is hosted on Render's free tier, so the application may take up to a minute to start after a period of inactivity. If the page does not load correctly on the first attempt, please wait a moment and refresh the page. Occasionally, more than one refresh may be required.
+- Odinbook is hosted on Render's free tier, so the application may take up to a minute to start after a period of inactivity.
 
 
 ## ℹ️ Overview 
@@ -81,7 +81,7 @@ If you have any questions or ideas for improvements, feel free to share them the
 
 - ゲストアカウントでは、投稿の作成、コメント、「いいね」、他のユーザーとの交流など、アプリの主なSNS機能をお試しいただけます。今後利用する方も同じ状態で共有デモアカウントを利用できるよう、ゲストアカウントのプロフィールおよびアカウント情報は変更できない仕様にしています。
 
-- OdinbookはRenderの無料プランで公開しているため、一定時間アクセスがない場合、アプリの起動に最大1分ほどかかることがあります。初回アクセス時に正常に表示されない場合は、少し時間をおいてからページを再読み込みしてください。場合によっては、複数回の再読み込みが必要になることがあります。
+- OdinbookはRenderの無料プランでホスティングしているため、一定時間アクセスがない場合、起動に最大1分ほどかかることがあります。
 
 
 ## ℹ️ 概要
