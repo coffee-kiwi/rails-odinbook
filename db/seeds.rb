@@ -14,6 +14,10 @@ guest = User.find_or_create_by!(email: "guest@example.com") do |user|
     user.username = "Guest"
 end
 
+guest.assign_attributes(
+  username: "Guest"
+)
+
 guest.posts.find_or_create_by!(title: "Seed post") do |post|
     post.body = "Hi there, this is a seeded post done by the guest account."
 end
