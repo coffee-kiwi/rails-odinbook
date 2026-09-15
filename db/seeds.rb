@@ -11,6 +11,7 @@
 # Create Guest login-user for recruiters to use
 guest = User.find_or_create_by!(email: "guest@example.com") do |user|
     user.password = "111111"
+    user.username = "Guest"
 end
 
 guest.posts.find_or_create_by!(title: "Seed post") do |post|
